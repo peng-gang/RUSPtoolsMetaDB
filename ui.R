@@ -4,16 +4,17 @@ library(shiny)
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Old Faithful Geyser Data"),
+  titlePanel("RUSPtools",
+             title = h1("RUSPtools: Newborn Metabolic Screening Database")),
   
   # Sidebar with a slider input for number of bins
   sidebarLayout(
     sidebarPanel(
-      sliderInput("bins",
-                  "Number of bins:",
-                  min = 1,
-                  max = 50,
-                  value = 30)
+      tabsetPanel(
+        tabPanel("Show", fluid = TRUE),
+        tabPanel("Compare", fluid = TRUE),
+        tabPanel("About", fluid = TRUE)
+      )
     ),
     
     # Show a plot of the generated distribution
