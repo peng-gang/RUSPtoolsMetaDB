@@ -324,7 +324,72 @@ shinyServer(function(input, output) {
         heights = c(2,1))
       
     } else if(input$tabset == "about"){
+      title = paste0("C3", " (\u03BCmol/L)")
+      idx <- which(meta.name=="C3") + 7
+      meta <- control.clean[,idx]
+      idx.sel <- rep(TRUE, nrow(control.clean))
       
+      idx.sel <- idx.sel & control.clean$Age_hr >= 24 & control.clean$Age_hr <=48
+      idx.sel <- idx.sel & control.clean$TPN_HYPERAL==0
+
+      
+      val <- matrix(0, 5, 5)
+      num <- matrix(0, 5, 5)
+      for(i in 1:5){
+        for(j in 1:5){
+          idx.tmp <- idx.sel & idx.BW==i & idx.GA==j
+          val[i,j] <- mean(meta[idx.tmp], na.rm = TRUE)
+          num[i,j] <- sum(idx.tmp, na.rm = TRUE)
+        }
+      }
+      
+      dplot <- data.frame(
+        GA = factor(rep(c("28-36", "37-38", "39-40", "41", "42"), each = 5), 
+                    levels = c("28-36", "37-38", "39-40", "41", "42")),
+        BW = factor(rep(c("1000-2499", "2500-3000", "3001-3500", "3501-4000","4001-5000"), 5),
+                    levels =c("1000-2499", "2500-3000", "3001-3500", "3501-4000","4001-5000")),
+        val = as.vector(val),
+        text = paste0(format(round(as.vector(val), 2), nsmall = 2), "\n(n=",
+                      num, ")")
+      )
+      
+      mx <- max(as.vector(val), na.rm = TRUE)
+      mn <- min(as.vector(val), na.rm = TRUE)
+      
+      gp.heat <- ggplot(dplot, aes(GA, BW)) + 
+        geom_raster(aes(fill = val)) + 
+        geom_text(aes(label = text), size=4) + 
+        labs(x = "Gestational Age (week)", y = "Birth Weight (g)", title = title) + 
+        theme_classic() + 
+        scale_fill_gradientn(colours = c("#00A1D5FF", "#FFFFFFFF", "#B24745FF"), limits = c(mn, mx)) +
+        geom_rect(aes(xmin = 1.5, xmax = 4.5, ymin = 1.5, ymax = 4.5), size = 0.6, fill = NA, color="black") +
+        theme(legend.title = element_blank(), text = element_text(size = 18), legend.position = "right")
+      
+      
+      idx.sel.All <- idx.sel
+      idx.sel.GA <- idx.sel & idx.GA==3
+      
+      dplot <- data.frame(
+        meta = c(meta[which(idx.sel.All)], meta[which(idx.sel.GA)]),
+        BW = c(control.clean$BW[which(idx.sel.All)], 
+               control.clean$BW[which(idx.sel.GA)]),
+        GA = c(rep("All", sum(idx.sel.All, na.rm = TRUE)),
+               rep("GA: 39-40", sum(idx.sel.GA, na.rm = TRUE)))
+      )
+      
+      
+      gp.smooth <- ggplot(dplot) + 
+        geom_smooth(aes(x=BW, y=meta, color=GA, fill = GA)) +
+        labs(x="Birth Weight (g)", y=title) +
+        scale_color_jama() + 
+        theme_classic() + 
+        theme(legend.title = element_blank(),
+              text = element_text(size=18),
+              legend.position = c(0.75, 0.25))
+      
+      gp <- ggarrange(
+        gp.heat, gp.smooth, NULL,
+        ncol = 1, nrow = 3)
     }
     gp
   }, width = 450, 
