@@ -281,7 +281,7 @@ shinyUI(fluidPage(
                     "No TPN" = 2,
                     "TPN" = 3
                   ),
-                  selected = 2,
+                  selected = 2
                 )
               )
             )
