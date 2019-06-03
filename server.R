@@ -113,7 +113,8 @@ shinyServer(function(input, output) {
       
       
       gp.smooth <- ggplot(dplot) + 
-        geom_smooth(aes(x=BW, y=meta, color=GA, fill = GA)) +
+        geom_smooth(aes(x=BW, y=meta, color=GA, fill = GA), 
+                    method = "gam", formula = y ~ s(x, bs = "cs")) +
         labs(x="Birth Weight (g)", y=title) +
         scale_color_jama() + 
         theme_classic() + 
@@ -278,7 +279,7 @@ shinyServer(function(input, output) {
         for(j in 1:5){
           idx.tmpA <- idx.selA & idx.BW==i & idx.GA==j
           idx.tmpB <- idx.selB & idx.BW==i & idx.GA==j
-          valAB[i,j] <- cohen.d(meta[which(idx.tmpA)], meta[which(idx.tmpB)])$estimate
+          valAB[i,j] <- suppressWarnings(cohen.d(meta[which(idx.tmpA)], meta[which(idx.tmpB)])$estimate)
         }
       }
       
@@ -299,17 +300,29 @@ shinyServer(function(input, output) {
       dplotAB$val[dplotAB$val > 1] <- 1
       dplotAB$val[dplotAB$val < -1] <- -1
       
-      gpAB <- ggplot(dplotAB, aes(GA, BW)) + 
-        geom_raster(aes(fill = val)) + 
-        geom_text(aes(label = text), size=4) + 
-        labs(x = "Gestational Age (week)", y = "Birth Weight (g)", title = "Cohen's d") + 
-        theme_classic() + 
-        scale_fill_gradientn(colours = c("#00A1D5FF", "#FFFFFFFF", "#B24745FF"), limits = c(-mxAB, mxAB),
-                             breaks = c(-.8, -.5, -.2, .2, .5, .8),
-                             labels = c("-.8", "-.5", "-.2", ".2", ".5", ".8")) +
-        geom_rect(aes(xmin = 1.5, xmax = 4.5, ymin = 1.5, ymax = 4.5), size = 0.6, fill = NA, color="black") +
-        theme(legend.title = element_blank(), text = element_text(size = 18), legend.position = "right")
-      
+      if(mxAB==0){
+        gpAB <- ggplot(dplotAB, aes(GA, BW)) + 
+          geom_raster(aes(fill = val)) + 
+          geom_text(aes(label = text), size=4) + 
+          labs(x = "Gestational Age (week)", y = "Birth Weight (g)", title = "Cohen's d") + 
+          theme_classic() + 
+          scale_fill_gradientn(colours = c("#00A1D5FF", "#FFFFFFFF", "#B24745FF"), limits = c(-mxAB, mxAB)) +
+          geom_rect(aes(xmin = 1.5, xmax = 4.5, ymin = 1.5, ymax = 4.5), size = 0.6, fill = NA, color="black") +
+          theme(legend.title = element_blank(), text = element_text(size = 18), legend.position = "right")
+      } else{
+        gpAB <- ggplot(dplotAB, aes(GA, BW)) + 
+          geom_raster(aes(fill = val)) + 
+          geom_text(aes(label = text), size=4) + 
+          labs(x = "Gestational Age (week)", y = "Birth Weight (g)", title = "Cohen's d") + 
+          theme_classic() + 
+          scale_fill_gradientn(colours = c("#00A1D5FF", "#FFFFFFFF", "#B24745FF"), limits = c(-mxAB, mxAB),
+                               breaks = c(-.8, -.5, -.2, .2, .5, .8),
+                               labels = c("-.8", "-.5", "-.2", ".2", ".5", ".8")) +
+          geom_rect(aes(xmin = 1.5, xmax = 4.5, ymin = 1.5, ymax = 4.5), size = 0.6, fill = NA, color="black") +
+          theme(legend.title = element_blank(), text = element_text(size = 18), legend.position = "right")
+        
+      }
+            
       
       gp <- ggarrange(
         ggarrange(
@@ -379,7 +392,8 @@ shinyServer(function(input, output) {
       
       
       gp.smooth <- ggplot(dplot) + 
-        geom_smooth(aes(x=BW, y=meta, color=GA, fill = GA)) +
+        geom_smooth(aes(x=BW, y=meta, color=GA, fill = GA), 
+                    method = "gam", formula = y ~ s(x, bs = "cs")) +
         labs(x="Birth Weight (g)", y=title) +
         scale_color_jama() + 
         theme_classic() + 
