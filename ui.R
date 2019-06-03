@@ -291,10 +291,22 @@ shinyUI(fluidPage(
         tabPanel(
           "About", fluid = TRUE,
           value = "about",
-          p("lalala"))
-      ),
-      p("lalala"),
-      width = 3
+          h2("About RUSPtools"),
+          p(
+            "This web application shows the dynamic changes in newborn metabolism in relation to birth weight, 
+            gestational age, sex, and race/ethnicity, and estimates the physiological variability in screening 
+            markers for inborn metabolic disorders."
+          ),
+          h2("Instructions"),
+          p(
+            "Click on the tab Show to view the dynamic of individual metabolites/ratios, or click on
+            the tab Compare to make pairwise comparisons between individual metabolites/ratios by five covariates:
+            gestational age, birth weight, race/ethnicity, gender, and age at blood sample collection. To evaluate
+            the effects of these factors on the analytes, click on the corresponding drop-down menu and click on
+            your selections."
+          )
+      )
+      # p("lalala"), width = 3
     ),
     
     # Show a plot of the generated distribution
