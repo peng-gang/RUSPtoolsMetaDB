@@ -24,7 +24,7 @@ shinyUI(fluidPage(
               "Single",
               value = "single",
               tags$div(
-                title = "Select an anallyte to show",
+                title = "Select an analyte from 41 individual markers",
                 selectInput(
                   "analytes",
                   label = h4("Analytes"),
@@ -37,7 +37,7 @@ shinyUI(fluidPage(
               "Ratio",
               value = "ratio",
               tags$div(
-                title = "Select a numerator and a denominator",
+                title = "Select the numerator and the denominator, the values will be added together for numerator or denominator if multiple markers are selected",
                 selectInput(
                   "numerator",
                   label = h4("Numerator"),
@@ -58,7 +58,7 @@ shinyUI(fluidPage(
           hr(),
           
           tags$div(
-            title = "Specify the race/ethnicity to show",
+            title = "View marker levels associated with four race/ethnicity groups",
             selectInput(
               "race",
               label = h4("Race/Ethnicity"),
@@ -75,7 +75,7 @@ shinyUI(fluidPage(
           
           hr(),
           tags$div(
-            title = "Specify the sex to show",
+            title = "View marker levels associated with female and male infants",
             selectInput(
               "sex",
               label = h4("Sex"),
@@ -90,7 +90,7 @@ shinyUI(fluidPage(
           
           hr(),
           tags$div(
-            title = "Select a range of age at blood collection to show",
+            title = "View changes in marker levels related to the age of blood collection after birth",
             selectInput(
               "aac",
               label = h4("Age at blood collection"),
@@ -105,7 +105,7 @@ shinyUI(fluidPage(
             
             hr(),
             tags$div(
-              title = "Select TPN option",
+              title = "View changes in marker levels related to TPN status",
               selectInput(
                 "tpn",
                 label = h4("Total Parenteral Nutrition"),
@@ -128,7 +128,7 @@ shinyUI(fluidPage(
               "Single",
               value = "singleC",
               tags$div(
-                title = "Select an anallyte to show",
+                title = "Select an analyte from 41 individual markers",
                 selectInput(
                   "analytesC",
                   label = h4("Analytes"),
@@ -141,7 +141,7 @@ shinyUI(fluidPage(
               "Ratio",
               value = "ratioC",
               tags$div(
-                title = "Select a numerator and a denominator",
+                title = "Select the numerator and the denominator. the values will be added together for numerator or denominator if multiple markers are selected",
                 selectInput(
                   "numeratorC",
                   label = h4("Numerator"),
@@ -167,7 +167,7 @@ shinyUI(fluidPage(
               h3("Group A"),
               
               tags$div(
-                title = "Specify the race/ethnicity to show",
+                title = "View marker levels associated with four race/ethnicity groups",
                 selectInput(
                   "raceA",
                   label = h4("Race/Ethnicity"),
@@ -183,7 +183,7 @@ shinyUI(fluidPage(
               ),
               
               tags$div(
-                title = "Specify the sex to show",
+                title = "View marker levels associated with female and male infants",
                 selectInput(
                   "sexA",
                   label = h4("Sex"),
@@ -197,7 +197,7 @@ shinyUI(fluidPage(
               ),
               
               tags$div(
-                title = "Select a range of age at blood collection to show",
+                title = "View changes in marker levels related to the age of blood collection after birth",
                 selectInput(
                   "aacA",
                   label = h4("Age at blood collection"),
@@ -211,7 +211,7 @@ shinyUI(fluidPage(
                 ),
                 
                 tags$div(
-                  title = "Select TPN option",
+                  title = "View changes in marker levels related to TPN status",
                   selectInput(
                     "tpnA",
                     label = h4("Total Parenteral Nutrition"),
@@ -229,7 +229,7 @@ shinyUI(fluidPage(
               h3("Group B"),
               
               tags$div(
-                title = "Specify the race/ethnicity to show",
+                title = "View marker levels associated with four race/ethnicity groups",
                 selectInput(
                   "raceB",
                   label = h4("Race/Ethnicity"),
@@ -245,7 +245,7 @@ shinyUI(fluidPage(
               ),
               
               tags$div(
-                title = "Specify the sex to show",
+                title = "View marker levels associated with female and male infants",
                 selectInput(
                   "sexB",
                   label = h4("Sex"),
@@ -259,7 +259,7 @@ shinyUI(fluidPage(
               ),
               
               tags$div(
-                title = "Select a range of age at blood collection to show",
+                title = "View changes in marker levels related to the age of blood collection after birth",
                 selectInput(
                   "aacB",
                   label = h4("Age at blood collection"),
@@ -273,7 +273,7 @@ shinyUI(fluidPage(
               ),
               
               tags$div(
-                title = "Select TPN option",
+                title = "View changes in marker levels related to TPN status",
                 selectInput(
                   "tpnB",
                   label = h4("Total Parenteral Nutrition"),
@@ -305,9 +305,7 @@ shinyUI(fluidPage(
             Values in each tile show the mean analyte value and the group size in parenthesis. 
             The line charts show the marginal trends of the selected analyte with respect to gestational age (top) 
             and increasing birth weight (right). Click drop-down menu for Analytes to select from 43 analytes, 
-            or click Ratio to select a ratio of two markers. Click drop-down menus for Race/Ethnicity to view marker 
-            levels associated with four race/ethnicity groups; for Sex to view marker levels associated with female and male infants; 
-            and for Age at collection to view changes in marker levels related to the age of blood collection after birth. "
+            or click Ratio to select a ratio of multiple markers."
           ),
           p(
             "Click ", code("compare"), " for a pairwise comparison of analytes and analyte ratios for two sample groups. 
