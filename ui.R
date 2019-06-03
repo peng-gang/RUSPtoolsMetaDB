@@ -6,6 +6,11 @@ load("data/RUSP.SN.RData")
 shinyUI(fluidPage(
   includeCSS("www/style.css"),
   
+  tags$style(type="text/css",
+             ".shiny-output-error { visibility: hidden; }",
+             ".shiny-output-error:before { visibility: hidden; }"
+  ),
+  
   # Application title
   titlePanel("RUSPtools",
              title = h1("RUSPtools: Newborn Metabolic Screening Database")),
