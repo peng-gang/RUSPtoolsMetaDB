@@ -12,6 +12,7 @@ shinyUI(fluidPage(
   
   sidebarLayout(
     sidebarPanel(
+      # width = 3,
       tabsetPanel(
         id = "tabset",
         tabPanel(
@@ -291,27 +292,68 @@ shinyUI(fluidPage(
         tabPanel(
           "About", fluid = TRUE,
           value = "about",
-          h2("About RUSPtools"),
+          h3("About RUSPtools"),
           p(
             "This web application shows the dynamic changes in newborn metabolism in relation to birth weight, 
             gestational age, sex, and race/ethnicity, and estimates the physiological variability in screening 
             markers for inborn metabolic disorders."
           ),
-          h2("Instructions"),
+          h3("Instructions"),
           p(
-            "Click on the tab Show to view the dynamic of individual metabolites/ratios, or click on
-            the tab Compare to make pairwise comparisons between individual metabolites/ratios by five covariates:
-            gestational age, birth weight, race/ethnicity, gender, and age at blood sample collection. To evaluate
-            the effects of these factors on the analytes, click on the corresponding drop-down menu and click on
-            your selections."
+            "Click ", code("show"), " to view the differences of analyte markers in relation to gestational age and birth weight. 
+            The heatmap color code indicates the mean analyte level for each of 25 groups of newborns. 
+            Values in each tile show the mean analyte value and the group size in parenthesis. 
+            The line charts show the marginal trends of the selected analyte with respect to gestational age (top) 
+            and increasing birth weight (right). Click drop-down menu for Analytes to select from 43 analytes, 
+            or click Ratio to select a ratio of two markers. Click drop-down menus for Race/Ethnicity to view marker 
+            levels associated with four race/ethnicity groups; for Sex to view marker levels associated with female and male infants; 
+            and for Age at collection to view changes in marker levels related to the age of blood collection after birth. "
+          ),
+          p(
+            "Click ", code("compare"), " for a pairwise comparison of analytes and analyte ratios for two sample groups. 
+            Heatmaps for sample group A and B are in the same format as in the individual analyte browser. 
+            The third heatmap shows the difference between the two sample groups in the format of cohen’s D 
+            (sample size of group A, sample size of group B), where cohen’s D values indicate the significance 
+            of the difference between the two groups."
+          ),
+          h3("Data"),
+          p("Data from 100,000 screen-negative singleton infants born between 2013 and 15 were selected at random by 
+            the ",
+            a("California NBS program ",
+              href = "https://www.cdph.ca.gov/Programs/CFH/DGDS/Pages/cbp/default.aspx",
+              target = "_blank"),
+            "that included metabolic analytes measured by MS/MS as well as birth weight, 
+            gestational age, sex, race/ethnicity, and age at blood collection. The California Department of Public Health 
+            is not responsible for the results or conclusions drawn by the authors of this publication."),
+          h3("Code"),
+          p(
+            "Built with ",
+            a("R",
+              href = "https://www.r-project.org", target = "_blank"),
+            "and the ",
+            a("Shiny framework.",
+              href = "http://shiny.rstudio.com", target = "_blank")
           )
       )
-      # p("lalala"), width = 3
-    ),
+    )),
     
     # Show a plot of the generated distribution
     mainPanel(
       plotOutput("plot")
     )
+  ),
+  p("Copyright 2019 by ",
+    a("Gang Peng ", 
+      href = "https://publichealth.yale.edu/people/gang_peng-1.profile",
+      target = "_blank"),
+    "and ",
+    a("Curt Scharfe.",
+      href = "https://medicine.yale.edu/genetics/people/curt_scharfe-2.profile",
+      target = "_blank")
+  ),
+  p("Report issues to the",
+    a("developers.",
+      href = "mailto:gang.peng@yale.edu")
   )
-))
+)
+)
