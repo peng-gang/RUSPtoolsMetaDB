@@ -303,9 +303,9 @@ shinyUI(fluidPage(
             "Click ", code("show"), " to view the differences of analyte markers in relation to gestational age and birth weight. 
             The heatmap color code indicates the mean analyte level for each of 25 groups of newborns. 
             Values in each tile show the mean analyte value and the group size in parenthesis. 
-            The line charts show the marginal trends of the selected analyte with respect to gestational age (top) 
-            and increasing birth weight (right). Click drop-down menu for Analytes to select from 43 analytes, 
-            or click Ratio to select a ratio of multiple markers."
+            The smoothed line chart shows the different changes of metabolite across birth weight for all newborns and newborns with gestational week between 39 to 40 weeks. 
+            The lines are estimated with locally weighted scatter-plot smoother method and the shade area shows the 95% confidence interval. 
+            "
           ),
           p(
             "Click ", code("compare"), " for a pairwise comparison of analytes and analyte ratios for two sample groups. 
