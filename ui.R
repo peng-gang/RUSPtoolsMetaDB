@@ -290,8 +290,11 @@ shinyUI(fluidPage(
         
         tabPanel(
           "About", fluid = TRUE,
-          value = "about")
-      ), width = 3
+          value = "about",
+          p("lalala"))
+      ),
+      p("lalala"),
+      width = 3
     ),
     
     # Show a plot of the generated distribution
