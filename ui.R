@@ -310,8 +310,8 @@ shinyUI(fluidPage(
           p(
             "Click ", code("compare"), " for a pairwise comparison of analytes and analyte ratios for two sample groups. 
             Heatmaps for sample group A and B are in the same format as in the individual analyte browser. 
-            The third heatmap shows the difference between the two sample groups in the format of cohen’s D 
-            (sample size of group A, sample size of group B), where cohen’s D values indicate the significance 
+            The third heatmap shows the difference between the two sample groups in the format of Cohen’s d 
+            (sample size of group A, sample size of group B), where Cohen’s d values indicate the significance 
             of the difference between the two groups."
           ),
           h3("Data"),
