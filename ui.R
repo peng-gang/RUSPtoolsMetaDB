@@ -8,8 +8,8 @@ shinyUI(fluidPage(
   
   # Application title
   titlePanel("RUSPtools",
-             title = h1("RUSPtools: Newborn Metabolic Screening Database")),
-  
+             title = tags$strong("RUSPtools: Newborn Metabolic Screening Database")),
+             #title = h2("RUSPtools: Newborn Metabolic Screening Database")),
   sidebarLayout(
     sidebarPanel(
       # width = 3,
@@ -37,7 +37,7 @@ shinyUI(fluidPage(
               "Ratio",
               value = "ratio",
               tags$div(
-                title = "Select the numerator and the denominator, the values will be added together for numerator or denominator if multiple markers are selected",
+                title = "Select the numerator and the denominator, the values will be added together for numerator or denominator if multiple markers are selected. A selected marker could be removed by clicking the marker and pressing the delete key",
                 selectInput(
                   "numerator",
                   label = h4("Numerator"),
@@ -73,7 +73,7 @@ shinyUI(fluidPage(
             )
           ),
           
-          hr(),
+          # hr(),
           tags$div(
             title = "View marker levels associated with female and male infants",
             selectInput(
@@ -88,7 +88,7 @@ shinyUI(fluidPage(
             )
           ),
           
-          hr(),
+          # hr(),
           tags$div(
             title = "View changes in marker levels related to the age of blood collection after birth",
             selectInput(
@@ -103,7 +103,7 @@ shinyUI(fluidPage(
               selected = 3
             ),
             
-            hr(),
+            # hr(),
             tags$div(
               title = "View changes in marker levels related to TPN status",
               selectInput(
@@ -141,7 +141,7 @@ shinyUI(fluidPage(
               "Ratio",
               value = "ratioC",
               tags$div(
-                title = "Select the numerator and the denominator. the values will be added together for numerator or denominator if multiple markers are selected",
+                title = "Select the numerator and the denominator, the values will be added together for numerator or denominator if multiple markers are selected. A selected marker could be removed by clicking the marker and pressing the delete key",
                 selectInput(
                   "numeratorC",
                   label = h4("Numerator"),
