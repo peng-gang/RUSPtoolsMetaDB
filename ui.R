@@ -8,7 +8,7 @@ shinyUI(fluidPage(
   
   # Application title
   titlePanel("RUSPtools",
-             title = tags$strong("RUSPtools: Newborn Metabolic Screening Database")),
+             title = tags$strong("Newborn Metabolic Screening Database")),
              #title = h2("RUSPtools: Newborn Metabolic Screening Database")),
   sidebarLayout(
     sidebarPanel(
@@ -164,13 +164,13 @@ shinyUI(fluidPage(
           fluidPage(
             column(
               6,
-              h3("Group A"),
+              h4(tags$strong("Group A")),
               
               tags$div(
                 title = "View marker levels associated with four race/ethnicity groups",
                 selectInput(
                   "raceA",
-                  label = h4("Race/Ethnicity"),
+                  label = h5("Race/Ethnicity"),
                   choices = list(
                     "All" = 1,
                     "Asian" = 2,
@@ -186,7 +186,7 @@ shinyUI(fluidPage(
                 title = "View marker levels associated with female and male infants",
                 selectInput(
                   "sexA",
-                  label = h4("Sex"),
+                  label = h5("Sex"),
                   choices = list(
                     "Both" = 1,
                     "Male" = 2,
@@ -200,7 +200,7 @@ shinyUI(fluidPage(
                 title = "View changes in marker levels related to the age of blood collection after birth",
                 selectInput(
                   "aacA",
-                  label = h4("Age at blood collection"),
+                  label = h5("Age at blood collection"),
                   choices = list(
                     "All" = 1,
                     "12-24 hours" = 2,
@@ -214,7 +214,7 @@ shinyUI(fluidPage(
                   title = "View changes in marker levels related to TPN status",
                   selectInput(
                     "tpnA",
-                    label = h4("Total Parenteral Nutrition"),
+                    label = h5("Total Parenteral Nutrition"),
                     choices = list(
                       "All" = 1,
                       "No TPN" = 2,
@@ -226,13 +226,13 @@ shinyUI(fluidPage(
             ),
             column(
               6,
-              h3("Group B"),
+              h4(tags$strong("Group B")),
               
               tags$div(
                 title = "View marker levels associated with four race/ethnicity groups",
                 selectInput(
                   "raceB",
-                  label = h4("Race/Ethnicity"),
+                  label = h5("Race/Ethnicity"),
                   choices = list(
                     "All" = 1,
                     "Asian" = 2,
@@ -248,7 +248,7 @@ shinyUI(fluidPage(
                 title = "View marker levels associated with female and male infants",
                 selectInput(
                   "sexB",
-                  label = h4("Sex"),
+                  label = h5("Sex"),
                   choices = list(
                     "Both" = 1,
                     "Male" = 2,
@@ -262,7 +262,7 @@ shinyUI(fluidPage(
                 title = "View changes in marker levels related to the age of blood collection after birth",
                 selectInput(
                   "aacB",
-                  label = h4("Age at blood collection"),
+                  label = h5("Age at blood collection"),
                   choices = list(
                     "All" = 1,
                     "12-24 hours" = 2,
@@ -276,7 +276,7 @@ shinyUI(fluidPage(
                 title = "View changes in marker levels related to TPN status",
                 selectInput(
                   "tpnB",
-                  label = h4("Total Parenteral Nutrition"),
+                  label = h5("Total Parenteral Nutrition"),
                   choices = list(
                     "All" = 1,
                     "No TPN" = 2,
@@ -292,13 +292,13 @@ shinyUI(fluidPage(
         tabPanel(
           "About", fluid = TRUE,
           value = "about",
-          h3("About RUSPtools"),
+          h4(tags$strong("About RUSPtools")),
           p(
             "This web application shows the dynamic changes in newborn metabolism in relation to birth weight, 
             gestational age, sex, and race/ethnicity, and estimates the physiological variability in screening 
             markers for inborn metabolic disorders."
           ),
-          h3("Instructions"),
+          h4(tags$strong("Instructions")),
           p(
             "Click ", code("show"), " to view the differences of analyte markers in relation to gestational age and birth weight. 
             The heatmap color code indicates the mean analyte level for each of 25 groups of newborns. 
@@ -314,7 +314,7 @@ shinyUI(fluidPage(
             (sample size of group A, sample size of group B), where Cohen’s d values indicate the significance 
             of the difference between the two groups."
           ),
-          h3("Data"),
+          h4(tags$strong("Data")),
           p("Data from 100,000 screen-negative singleton infants born between 2013 and 15 were selected at random by 
             the ",
             a("California NBS program ",
@@ -323,7 +323,7 @@ shinyUI(fluidPage(
             "that included metabolic analytes measured by MS/MS as well as birth weight, 
             gestational age, sex, race/ethnicity, and age at blood collection. The California Department of Public Health 
             is not responsible for the results or conclusions drawn by the authors of this publication."),
-          h3("Code"),
+          h4(tags$strong("Code")),
           p(
             "Built with ",
             a("R",
@@ -347,9 +347,9 @@ shinyUI(fluidPage(
     "and ",
     a("Curt Scharfe.",
       href = "https://medicine.yale.edu/genetics/people/curt_scharfe-2.profile",
-      target = "_blank")
-  ),
-  p("Report issues to the",
+      target = "_blank")),
+    p(
+    "Report issues to the",
     a("developers.",
       href = "mailto:gang.peng@yale.edu")
   )
