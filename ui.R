@@ -295,24 +295,24 @@ shinyUI(fluidPage(
           h4(tags$strong("About RUSPtools")),
           p(
             "This web application shows the dynamic changes in newborn metabolism in relation to birth weight, 
-            gestational age, sex, and race/ethnicity, and estimates the physiological variability in screening 
-            markers for inborn metabolic disorders."
+            gestational age, sex, and race/ethnicity and to assess variable levels of specific screening markers for 
+            inborn metabolic disorders."
           ),
           h4(tags$strong("Instructions")),
           p(
-            "Click ", code("show"), " to view the differences of analyte markers in relation to gestational age and birth weight. 
-            The heatmap color code indicates the mean analyte level for each of 25 groups of newborns. 
-            Values in each tile show the mean analyte value and the group size in parenthesis. 
-            The smoothed line chart shows the different changes of metabolite across birth weight for all newborns and newborns with gestational week between 39 to 40 weeks. 
-            The lines are estimated with locally weighted scatter-plot smoother method and the shade area shows the 95% confidence interval. 
-            "
+            "Click ", code("show"), " to view the differences of metabolic markers in relation to gestational age 
+            and birth weight. The heat-map color code indicates the mean marker levels for each of 25 groups of 
+            newborns. Values in each group show the mean marker levels with the group size in parenthesis. 
+            Smoothed line charts show changes of marker levels in all newborns and full-term newborns (39-40 weeks). 
+            The lines are estimated with a locally weighted scatter-plot smoother method. Shaded areas indicate 
+            the 95% confidence interval."
           ),
           p(
-            "Click ", code("compare"), " for a pairwise comparison of analytes and analyte ratios for two sample groups. 
-            Heatmaps for sample group A and B are in the same format as in the individual analyte browser. 
-            The third heatmap shows the difference between the two sample groups in the format of Cohen’s d 
-            (sample size of group A, sample size of group B), where Cohen’s d values indicate the significance 
-            of the difference between the two groups."
+            "Click ", code("compare"), " for a pairwise comparison of markers and marker ratios for two sample groups. 
+            Heat-maps for sample group A and B are in the same format as shown for individual markers. 
+            Heat-map A-B shows the difference between the two sample groups in the format of Cohen’s d 
+            (sample size of group A, sample size of group B), where Cohen’s d value indicates the significance of 
+            the difference between the two groups."
           ),
           h4(tags$strong("Data")),
           p("Data from 100,000 screen-negative singleton infants born between 2013 and 15 were selected at random by 
@@ -340,18 +340,18 @@ shinyUI(fluidPage(
       plotOutput("plot")
     )
   ),
-  p("Copyright 2019 by ",
-    a("Gang Peng ", 
+  p(
+    "Copyright 2019 by ",
+    a("Gang Peng ",
       href = "https://publichealth.yale.edu/people/gang_peng-1.profile",
       target = "_blank"),
     "and ",
     a("Curt Scharfe.",
       href = "https://medicine.yale.edu/genetics/people/curt_scharfe-2.profile",
-      target = "_blank")),
-    p(
-    "Report issues to the",
+      target = "_blank")
+  ),
+  p("Report issues to the",
     a("developers.",
-      href = "mailto:gang.peng@yale.edu")
-  )
+      href = "mailto:gang.peng@yale.edu"))
 )
 )
