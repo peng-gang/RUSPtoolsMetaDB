@@ -37,7 +37,9 @@ shinyUI(fluidPage(
               "Ratio",
               value = "ratio",
               tags$div(
-                title = "Select numerator and denominator. The values will be added together for numerator or denominator if multiple markers are selected. A selected marker could be removed by clicking the marker then pressing the delete key",
+                title = "Select numerator and denominator.
+The values will be added together for numerator or denominator if multiple markers are selected.
+A selected marker could be removed by clicking the marker then pressing the delete key",
                 selectInput(
                   "numerator",
                   label = h4("Numerator"),
