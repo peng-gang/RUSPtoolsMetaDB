@@ -72,7 +72,7 @@ shinyServer(function(input, output) {
       for(i in 1:5){
         for(j in 1:5){
           idx.tmp <- idx.sel & idx.BW==i & idx.GA==j
-          val[i,j] <- mean(meta[idx.tmp], na.rm = TRUE)
+          val[i,j] <- median(meta[idx.tmp], na.rm = TRUE)
           num[i,j] <- sum(idx.tmp, na.rm = TRUE)
         }
       }
@@ -187,7 +187,7 @@ shinyServer(function(input, output) {
       for(i in 1:5){
         for(j in 1:5){
           idx.tmp <- idx.selA & idx.BW==i & idx.GA==j
-          valA[i,j] <- mean(meta[idx.tmp], na.rm = TRUE)
+          valA[i,j] <- median(meta[idx.tmp], na.rm = TRUE)
           numA[i,j] <- sum(idx.tmp, na.rm = TRUE)
         }
       }
@@ -233,7 +233,7 @@ shinyServer(function(input, output) {
       for(i in 1:5){
         for(j in 1:5){
           idx.tmp <- idx.selB & idx.BW==i & idx.GA==j
-          valB[i,j] <- mean(meta[idx.tmp], na.rm = TRUE)
+          valB[i,j] <- median(meta[idx.tmp], na.rm = TRUE)
           numB[i,j] <- sum(idx.tmp, na.rm = TRUE)
         }
       }
@@ -351,7 +351,7 @@ shinyServer(function(input, output) {
       for(i in 1:5){
         for(j in 1:5){
           idx.tmp <- idx.sel & idx.BW==i & idx.GA==j
-          val[i,j] <- mean(meta[idx.tmp], na.rm = TRUE)
+          val[i,j] <- median(meta[idx.tmp], na.rm = TRUE)
           num[i,j] <- sum(idx.tmp, na.rm = TRUE)
         }
       }

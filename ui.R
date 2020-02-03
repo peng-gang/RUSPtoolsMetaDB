@@ -303,8 +303,8 @@ A selected marker could be removed by clicking the marker then pressing the dele
           h4(tags$strong("Instructions")),
           p(
             "Click ", code("show"), " to view the differences of metabolic markers in relation to gestational age 
-            and birth weight. The heat-map color code indicates the mean marker levels for each of 25 groups of 
-            newborns. Values in each group show the mean marker levels with the group size in parenthesis. 
+            and birth weight. The heat-map color code indicates the median of marker levels for each of 25 groups of 
+            newborns. Values in each group show the meadian of marker levels with the group size in parenthesis. 
             Smoothed line charts show changes of marker levels in all newborns and full-term newborns (39-40 weeks). 
             The lines are estimated with a locally weighted scatter-plot smoother method. Shaded areas indicate 
             the 95% confidence interval."
